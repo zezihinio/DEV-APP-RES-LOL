@@ -1,0 +1,85 @@
+.compoCard{
+    height: 230px;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: black;
+    border: 1px solid white;
+    position: relative;
+}
+
+.compoCardHeader{
+    height: 80px;
+    width: 90%;
+    padding: 0px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.compoCardChamp{
+    height: 80px;
+    width: 80px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
+.compoCardRune{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.compoCardRunePrimary, .compoCardRuneSecondary{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px rgb(255, 254, 182);
+    cursor: pointer;
+}
+
+
+
+.compoCardRunePrimary {
+    height: 45px;
+    width: 45px;
+}
+.compoCardRuneSecondary {
+    height: 40px;
+    width: 40px;
+}
+
+
+.compoCardChamp img, .compoCardRunePrimary img, .compoCardRuneSecondary img {
+    height: 100%;
+    width: 100%;
+}
+
+.editModel{
+    position: absolute;
+    height: 230px;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    bottom: 0%;
+    background-color: red;
+    z-index: 10;
+    transition: 0.4s ease;  
+    flex-direction: column;  
+}
+.editModel.close{
+    transform: scaleY(0);
+
+}
+

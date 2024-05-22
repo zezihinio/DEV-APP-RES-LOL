@@ -1,0 +1,38 @@
+.itemCard{
+    height: 260px;
+    width: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: black;
+    border: 1px solid white;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.itemCard img{
+    height: 100%;
+    width: 100%;
+}
+
+.itemCard span{
+    font-size: 0.8em;
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    padding: 5px 12px;
+    transition: 0.3s ease;
+}
+
+.itemCard:hover span{
+    opacity: 1;
+    transform: translateY(5px);
+}
+

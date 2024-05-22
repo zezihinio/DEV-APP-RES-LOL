@@ -1,0 +1,94 @@
+.compoCreate{
+    width: 90vw;
+    padding: 120px 5vw;
+    display: flex;
+    
+    align-items: center;
+    flex-direction: column;
+}
+
+.validateBtn{
+    height: 30px;
+    width: 250px;
+    border-radius: 12px;
+    border: none;
+    padding: 5px 15px;
+    margin: 15px 0px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 45px;
+}
+
+.validateBtn:hover{
+    background-color: rgb(113, 240, 55);
+    transform: scale(1.2);
+
+}
+
+.compoNameInput, .compoChampInput{
+    height: 30px;
+    width: 250px;
+    border-radius: 12px;
+    border: none;
+    padding: 5px 15px;
+    margin: 15px 0px;
+}
+
+.runeList{
+    display: flex;
+    gap: 35px;
+}
+
+.rune{
+    height: 60px;
+    width: 60px;
+    border: 5px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s ease;  
+    border-radius: 50%;
+    padding: 5px;  
+    overflow: hidden;
+}
+
+.rune img{
+    height: 80%;
+    width: 80%;
+    transition: 0.3s ease;
+}
+
+.other{
+    opacity: 0.5;
+}
+
+.rune:hover, .rune.active{
+    background-color: rgb(255, 255, 255);
+    border-color: green;
+}
+
+.allchampionsSelect{
+    width: 70%;
+    background-color: black;
+    border-radius: 18px;
+    overflow-y: scroll;
+    height: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 10px;
+}
+
+.championSelect{
+    height: 100px;
+    width: 100px;
+}
+
+.championSelect img{
+    height: 100%;
+    width: 100%;
+}
+
+

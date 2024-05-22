@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentification Page</title>
+    <!-- Inclure le CSS de Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Inclure le CSS de MDB UI Kit -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css">
+    <link rel="stylesheet" href="/path/to/your/AuthentificationPage.css">
+    <!-- Inclure le JS de bcryptjs -->
+    <script src="https://cdn.jsdelivr.net/npm/bcryptjs/dist/bcrypt.min.js"></script>
+</head>
+<body>
+    <div class="mainPage" 
+         data-auth-state="<%= authState %>" 
+         data-name-value="<%= nameValue %>" 
+         data-email-value="<%= emailValue %>" 
+         data-password-value="<%= passwordValue %>" 
+         data-repeat-password="<%= repeatPassword %>" 
+         data-email-login-value="<%= emailLoginValue %>" 
+         data-password-login-value="<%= passwordLoginValue %>">
+        <div class="container-fluid">
+            <% if (authState) { %>
+                <div class="card text-black m-5" style="border-radius: 25px;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-10 col-lg-6 order-2 order-lg-1 d-flex flex-column align-items-center">
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-user me-3 fa-lg"></i>
+                                    <input type="text" id="form1" class="form-control w-100" placeholder="Your Name" value="<%= nameValue %>">
+                                </div>
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-envelope me-3 fa-lg"></i>
+                                    <input type="email" id="form2" class="form-control" placeholder="Your Email" value="<%= emailValue %>">
+                                </div>
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-lock me-3 fa-lg"></i>
+                                    <input type="password" id="form3" class="form-control" placeholder="Password" value="<%= passwordValue %>">
+                                </div>
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-key me-3 fa-lg"></i>
+                                    <input type="password" id="form4" class="form-control" placeholder="Repeat your password" value="<%= repeatPassword %>">
+                                </div>
+                                <button class="btn btn-primary mb-4" onclick="register()">Register</button>
+                                <button class="btn btn-link mb-4" onclick="setAuthState(false)">Already in the game? Login here!</button>
+                            </div>
+                            <div class="col-md-10 col-lg-6 order-1 order-lg-2 d-flex align-items-center">
+                                <img src="https://logosmarcas.net/wp-content/uploads/2020/11/League-of-Legends-Logo.png" class="img-fluid" alt="League of Legends">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="card text-black m-5" style="border-radius: 25px;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-10 col-lg-6 order-2 order-lg-1 d-flex flex-column align-items-center">
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-envelope me-3 fa-lg"></i>
+                                    <input type="email" id="loginEmail" class="form-control" placeholder="Your Email" value="<%= emailLoginValue %>">
+                                </div>
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-lock me-3 fa-lg"></i>
+                                    <input type="password" id="loginPassword" class="form-control" placeholder="Password" value="<%= passwordLoginValue %>">
+                                </div>
+                                <button class="btn btn-primary mb-4" onclick="login()">Login</button>
+                                <button class="btn btn-link mb-4" onclick="setAuthState(true)">New Player? Sign up now</button>
+                            </div>
+                            <div class="col-md-10 col-lg-6 order-1 order-lg-2 d-flex align-items-center">
+                                <img src="https://logosmarcas.net/wp-content/uploads/2020/11/League-of-Legends-Logo.png" class="img-fluid" alt="League of Legends">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <script>
+        // Récupérer les variables injectées à partir des attributs de données
+        const mainPageElement = document.querySelector('.mainPage');
+        const authState = mainPageElement.getAttribute('data-auth-state') === 'true';
+        const nameValue = mainPageElement.getAttribute('data-name-value');
+        const emailValue = mainPageElement.getAttribute('data-email-value');
+        const passwordValue = mainPageElement.getAttribute('data-password-value');
+        const repeatPassword = mainPageElement.getAttribute('data-repeat-password');
+        const emailLoginValue = mainPageElement.getAttribute('data-email-login-value');
+        const passwordLoginValue = mainPageElement.getAttribute('data-password-login-value');
+
+        function setAuthState(state) {
+            // Manipuler l'état d'authentification
+            document.forms['authForm'].submit();
+        }
+
+        function validateForm() {
+            // Validation du formulaire de registre
+            if (!nameValue) {
+                alert("Name is not filled!");
+                return false;
+            }
+            if (!emailValue || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+                alert("Please enter a valid email!");
+                return false;
+            }
+            if (!passwordValue) {
+                alert("Password is not filled!");
+                return false;
+            }
+            if (!repeatPassword) {
+                alert("Please repeat the password!");
+                return false;
+            }
+            if (passwordValue !== repeatPassword) {
+                alert("Password does not match!");
+                return false;
+            }
+            return true;
+        }
+
+        async function register() {
+            // Fonction de registre
+            if (validateForm()) {
+                try {
+                    const hashedPassword = await bcrypt.hash(passwordValue, 10);
+                    const body = {
+                        name: nameValue,
+                        email: emailValue,
+                        password: hashedPassword
+                    };
+                    fetch("http://localhost:3001/createPlayer", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(body)
+                    })
+                    .then(() => {
+                        alert("Registration successful!");
+                    })
+                    .catch((error) => {
+                        console.error("Error during registration:", error);
+                        alert("Registration failed!");
+                    });
+                } catch (error) {
+                    console.error("Error hashing password:", error);
+                    alert("An error occurred while processing your registration.");
+                }
+            }
+        }
+
+        function login() {
+            // Fonction de login
+            if (emailLoginValue && passwordLoginValue) {
+                const body = {
+                    email: emailLoginValue,
+                    password: passwordLoginValue
+                };
+                fetch("http://localhost:3001/loginPlayer", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(body)
+                })
+                .then((rep) => rep.json())
+                .then((data) => {
+                    if (data === "LOGIN_SUCCESS") {
+                        console.log("Login success");
+                        // dispatch(connect(window.emailLoginValue)); // Action Redux pour connecter l'utilisateur
+                        window.location.href = '/';
+                    } else {
+                        alert(data);
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error during login:", error);
+                    alert("Login failed!");
+                });
+            } else {
+                alert('Invalid fields');
+            }
+        }
+        /**
+         * fonctionnalités bootstrap : 
+         * 1.Mise en page réactive :
+         * Les classes de grille (row, col-md-10, col-lg-6, etc.) permettent de structurer la page 
+         * de manière réactive pour qu'elle s'adapte bien à différentes tailles d'écran.
+         * 2.Formulaires et boutons stylisés :
+         * Les classes form-control pour les champs de formulaire et btn, btn-primary, btn-link pour 
+         * les boutons fournissent un style cohérent et professionnel sans nécessiter de CSS personnalisé.
+         * 3.Typographie et icônes :
+         * Les classes utilitaires pour la typographie (text-center, fw-bold) et les icônes (fas fa-user, 
+         * fas fa-envelope) améliorent l'apparence et l'expérience utilisateur de la page.
+         * */
+    </script>
+    <!-- Inclure le JS de Bootstrap, Popper.js et jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    /**
+
+</body>
+</html>

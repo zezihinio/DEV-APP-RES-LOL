@@ -1,0 +1,183 @@
+.headerMargin{
+    height: 95px;
+}
+
+.headerChampion{
+    height: fit-content;
+    width: 80vw;
+    margin: 15px 10vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.headerChampion img{
+    width: 100%;
+    height: auto;
+}
+
+.championName{
+    position: absolute;
+    left: 5%;
+    text-shadow: 0px 0px 15px black;
+    text-align: start;
+}
+.championName h1{
+    margin: 0;
+    font-size: 5em;
+    color: antiquewhite;
+    font-family: 'Times New Roman', Times, serif; 
+}
+.championName h2{
+    color: antiquewhite;
+    font-family: 'Times New Roman', Times, serif; 
+    font-size: 2em;
+}
+
+
+.championTitle{
+    position: absolute;
+}
+
+
+.s, .sF{
+    position: absolute;
+    font-size: 2em;
+    top: 5%;
+    right: 5%;
+    cursor: pointer;
+    transition: 0.3s ease;
+    
+}
+
+.sF{
+    color: gold;
+}
+
+
+.s:hover, .sF:hover{
+    transform: scale(1.2);
+}
+
+
+.allSkin{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin: 12px 10%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+}
+
+.skin{
+    width: 300px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.skin .zoom{
+    color: white;
+    position: absolute;
+    font-size: 1.5em;
+    top: 5%;
+    left: 5%;
+    transition: 0.3s ease;
+    transform: translateY(25px);
+    opacity: 0;
+    z-index: 4;
+}
+
+.skin:hover .zoom{
+    text-shadow: 0px 0px 5px black;
+    opacity: 1;
+    transform: translateY(0px);
+}
+.skin img{
+    height: 100%;
+    width: 100%;
+    transition: 0.3s ease;
+}
+
+.skin img:hover{
+    transform: scale(1.2);
+}
+
+.loreSection{
+    width: 90%;
+    margin: auto;
+    font-family: 'Times New Roman', Times, serif; 
+}
+
+.skin span{
+    position: absolute;
+    color: white;
+    text-shadow: 0px 0px 10px black;
+    bottom: 0;
+    background-color: black;
+    padding: 2px 15px 0px 15px;
+    font-weight: bold;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    z-index: 3;
+}
+
+
+.skinField{
+    z-index: 15;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skinField h1{
+    position: absolute;
+    bottom: 2%;
+    text-shadow: 0px 0px 30px black;
+}
+
+.skinField.hide{
+    display: none;
+}
+
+.skinField img{
+    display: block;
+    width: 80%;
+    
+}
+
+.leaveBtn{
+    height: 65px;
+    width: 65px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border:  solid white 2px;
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3 ease;
+    top: 5%;
+    right: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    opacity: 0.5;
+    transition: 0.3s ease;
+    color: antiquewhite;
+}
+
+.leaveBtn:hover{
+    opacity: 1;
+}

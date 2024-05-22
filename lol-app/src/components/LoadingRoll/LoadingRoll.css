@@ -1,0 +1,242 @@
+@font-face {
+    font-family: raleway;
+    src: url(./fonts/Raleway-Italic.ttf);
+}
+
+
+.loadingRoll-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+}
+
+
+
+.loadingRoll-msg{
+    position: absolute;
+    color: white;
+    font-size: 0.6em;
+    font-family: raleway;
+    animation: zoom 6s ease;
+    animation-iteration-count: infinite;
+}
+
+@keyframes zoom {
+    0%, 40%, 100%{
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+    60%, 90%{
+        opacity: 0;
+        transform: scale(0);
+    }
+
+}
+
+.loadingRoll {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    animation: rotate 10s linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+.decale {
+    transform: rotate(90deg);
+    animation: rotateDecale 10s linear !important;
+
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+        background-color: rgba(255, 0, 0, 0);
+
+    }
+
+    25% {
+        transform: rotate(90deg);
+        background-color: rgba(255, 0, 0, 0);
+
+    }
+
+    50% {
+        transform: rotate(180deg);
+        background-color: rgb(255, 0, 0);
+
+    }
+
+    75% {
+        transform: rotate(270deg);
+        background-color: rgba(255, 0, 0, 0);
+
+    }
+
+    100% {
+        transform: rotate(360deg);
+        background-color: rgba(255, 0, 0, 0);
+
+    }
+}
+
+@keyframes rotateDecale {
+    0% {
+        transform: rotate(0deg);
+        background-color: rgba(255, 0, 0, 0);
+    }
+
+    25% {
+        transform: rotate(-90deg);
+        background-color: rgba(255, 0, 0, 0);
+
+    }
+
+    50% {
+        transform: rotate(-180deg);
+        background-color: rgb(255, 0, 0);
+    }
+
+    75% {
+        transform: rotate(-270deg);
+        background-color: rgba(255, 0, 0, 0);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+        background-color: rgba(255, 0, 0, 0);
+    }
+}
+
+@keyframes animTopLeft {
+
+    0%,
+    100%,
+    50% {
+        transform: translateX(0) translateY(0);
+        opacity: 0.5
+    }
+
+    25% {
+        transform: translateX(-45%) translateY(-45%);
+        opacity: 0
+    }
+
+    75% {
+        transform: translateX(45%) translateY(45%);
+        opacity: 1
+    }
+}
+
+@keyframes animTopRight {
+
+    0%,
+    100%,
+    50% {
+        transform: translateX(0) translateY(0);
+        opacity: 0.5
+    }
+
+    25% {
+        transform: translateX(45%) translateY(-45%);
+        opacity: 1
+    }
+
+    75% {
+        transform: translateX(-45%) translateY(45%);
+        opacity: 0
+    }
+}
+
+@keyframes animBottomRight {
+
+    0%,
+    100%,
+    50% {
+        transform: translateX(0) translateY(0);
+        opacity: 0.5
+    }
+
+    25% {
+        transform: translateX(45%) translateY(45%);
+        opacity: 0
+    }
+
+    75% {
+        transform: translateX(-45%) translateY(-45%);
+        opacity: 1
+    }
+}
+
+@keyframes animBottomLeft {
+
+    0%,
+    100%,
+    50% {
+        transform: translateX(0) translateY(0);
+        opacity: 0.5
+    }
+
+    25% {
+        transform: translateX(-45%) translateY(45%);
+        opacity: 1
+    }
+
+    75% {
+        transform: translateX(45%) translateY(-45%);
+        opacity: 0
+    }
+}
+
+
+
+.loadingRoll div {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+
+}
+
+
+.loadingRoll-topLeft {
+    border-left: 1px grey solid;
+    border-top: 1px grey solid;
+    top: 0;
+    left: 0;
+    animation: animTopLeft 6s linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+.loadingRoll-topRight {
+    border-right: 1px grey solid;
+    border-top: 1px grey solid;
+    top: 0;
+    right: 0;
+    animation: animTopRight 6s linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+.loadingRoll-bottomRight {
+    border-right: 1px grey solid;
+    border-bottom: 1px grey solid;
+    bottom: 0;
+    right: 0;
+    animation: animBottomRight 6s linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+.loadingRoll-bottomLeft {
+    border-left: 1px grey solid;
+    border-bottom: 1px grey solid;
+    bottom: 0;
+    left: 0;
+    animation: animBottomLeft 6s linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
